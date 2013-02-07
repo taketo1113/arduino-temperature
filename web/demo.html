@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>TEMPERATURE</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/jquery-1.7.2.js"></script>
+	<script src="js/jquery.animate-colors.js"></script>
+<script>
+$(function() {
+	setInterval(setTemp, 3000);
+});
+
+var i = 0;
+
+var setTemp = function() {
+	var temp = tempColorData[i]['temp'];
+	$('section.temperature p').html(temp);
+
+	// Require: jquery.animate-color
+	var color = tempColorData[i]['color'];
+	$('body').animate({ backgroundColor: color }, 1000);
+
+	i = (i + 1) % tempColorData.length;
+}
+
+var tempColorData = [
+	{ temp: 40, color: "#F33633" }, 
+	{ temp: 35, color: "#FF8700" }, 
+	{ temp: 30, color: "#FFC940" }, 
+	{ temp: 25, color: "#659e45" }, 
+	{ temp: 15, color: "#00979B" }, 
+	{ temp: 10, color: "#6AB2E7" }, 
+	{ temp: 0, color: "#D5D6E3" }
+];
+
+</script>
+</head>
+<body id="demo">
+<article>
+	<section class="temperature">
+		<h1>TEMPERATURE</h1>
+		<p>28.5</p>
+	</section>
+</article>
+</body>
+</html>
